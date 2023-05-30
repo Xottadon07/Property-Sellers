@@ -42,7 +42,7 @@ class ScoreApp extends StatelessWidget {
           MyRoutes.homeRoute: (context) => HomeScreen(),
           MyRoutes.signupRoute: (context) => SignupPage(),
         },
-        initialRoute: MyRoutes.loginRoute,
+        initialRoute: MyRoutes.homeRoute,
         // home: HomeScreen(),
       ),
     );

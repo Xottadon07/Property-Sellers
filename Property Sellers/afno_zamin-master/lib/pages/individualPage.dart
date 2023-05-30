@@ -207,42 +207,42 @@ class _IndividualPageState extends State<IndividualPage> {
                       onPressed: () {
                         Future<void> fetchData() async {
                           var url = Uri.parse('http://10.0.0.2:5000/recommend');
-                          var data = {'title': widget.product.title};
-                          var headers = {
-                            'Content-Type': 'application/x-www-form-urlencoded',
-                          };
-                          var body = http_utils.mapToQuery(data);
-                          var response = await http.post(url,
-                              headers: headers, body: body);
+                          var newRequest = http.MultipartRequest('POST', url);
+                          newRequest.fields['title'] =
+                              'Siddarthcolony 7 Ana Home : House For Sale In Budhanilkantha, Kathmandu';
+                          // var data = {'title': widget.product.title};
+                          // var headers = {
+                          //   'Content-Type': 'application/x-www-form-urlencoded',
+                          // };
+                          // var body = http_utils.mapToQuery(data);
+                          // var response = await http.post(url,
+                          // headers: headers, body: body);
 
-                          if (response.statusCode == 200) {
-                            final Data = (response.body);
-                            final jsonString = json
-                                .encode(Data); // Convert back to JSON string
-                            setState(() {
-                              output = jsonString;
-                            });
-                          } else {
-                            setState(() {
-                              output = 'Error retrieving data';
-                            });
-                          }
+                          // if (response.statusCode == 200) {
+                          //   final Data = (response.body);
+                          //   final jsonString = json
+                          //       .encode(Data); // Convert back to JSON string
+                          //   setState(() {
+                          //     output = jsonString;
+                          // });
+                          await newRequest.send();
                         }
+                      }
 
-                        // Navigator.push(
-                        //   context,
-                        //   MaterialPageRoute(
-                        //     builder: (context) =>
-                        //         OutputPage(data: output),
-                        //   ),
-                        // );
+                      // Navigator.push(
+                      //   context,
+                      //   MaterialPageRoute(
+                      //     builder: (context) =>
+                      //         OutputPage(data: output),
+                      //   ),
+                      // );
 
-                        // Navigator.push(
-                        //   context,
-                        //   MaterialPageRoute(builder: (context) => OutputPage()),
-                        // );
-                        // TODO: Add button press logic here
-                      },
+                      // Navigator.push(
+                      //   context,
+                      //   MaterialPageRoute(builder: (context) => OutputPage()),
+                      // );
+                      // TODO: Add button press logic here
+                      ,
                       child: Text('Recommended'),
                     ),
                   ),
